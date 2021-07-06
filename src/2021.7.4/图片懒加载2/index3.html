@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>background</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .bg {
+      height: 200px;
+    }
+
+    #bg-image.lazy {
+      background-image: none;
+      background-color: #F1F1FA;
+    }
+
+    #bg-image {
+      background-image: url("https://ik.imagekit.io/demo/img/image1.jpeg?tr=w-400,h-300");
+      background-size: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bg-image" class="bg lazy"></div>
+  <div id="bg-image" class="bg lazy"></div>
+  <div id="bg-image" class="bg lazy"></div>
+  <div id="bg-image" class="bg lazy"></div>
+  <div id="bg-image" class="bg lazy"></div>
+  <div id="bg-image" class="bg lazy"></div>
+  <div id="bg-image" class="bg lazy"></div>
+  <div id="bg-image" class="bg lazy"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var lazyloadImages = document.querySelectorAll(".lazy");
+      var imageObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          debugger
+          if (entry.isIntersecting) {
+            var image = entry.target;
+            image.classList.remove("lazy");
+            imageObserver.unobserve(image);
+          }
+        });
+      });
+      lazyloadImages.forEach(function (image) {
+        imageObserver.observe(image);
+      });
+    });
+  </script>
+</body>
+
+</html>
