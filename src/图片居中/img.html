@@ -11,15 +11,19 @@
     .wrapper {
       width: 500px;
       height: 400px;
+      border: 1px solid black;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      /*为了效果明显，可以将如下边框打开，看一下效果*/
-      border: 1px solid black;
-      overflow: hidden;
     }
 
-    .wrapper img {
+    .img1 {
+      width: auto;
+      height: 100%;
+    }
+
+    .img2 {
       width: 100%;
       height: auto;
     }
@@ -31,10 +35,10 @@
   <title>让图片自动适应DIV容器大小</title>
 
   <div class="wrapper">
-    <img src="./1.jpg" />
+    <img class="img1" src="./1.jpg" />
   </div>
   <div class="wrapper">
-    <img src="./2.jpg" />
+    <img class="img2" src="./2.jpg" />
   </div>
 
 </body>
